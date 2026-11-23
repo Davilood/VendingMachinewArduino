@@ -75,8 +75,8 @@ El sistema se implementa como una única máquina de estados finita (FSM) con 10
 - **A0 → pulsador del joystick.** Lo uso como entrada digital con `INPUT_PULLUP`, así que pulsado = `LOW`.
 
 # Imágenes del Circuito {#imagenes}
-![Imagen Circuito](assets/img/circuito.png)
-![Imagen Circuito2](assets/img/circuito2.png)
+![Imagen Circuito](assets/img/circuito.jpeg)
+![Imagen Circuito2](assets/img/circuito2.jpeg)
 
 
 # Recursos Utilizados
