@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'es' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+  <main class="page">
+    <header class="post-header">
+      <p class="kicker">{{ page.subject | default: site.description }}</p>
+      <h1>{{ page.title | default: site.title }}</h1>
+      {% if page.subtitle %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
+      <div class="meta">
+        <span>{{ page.author | default: site.author }}</span>
+        {% if page.date %}<span class="dot">·</span><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d/%m/%Y" }}</time>{% endif %}
+      </div>
+    </header>
+
+    <article class="post">
+      {{ content }}
+    </article>
+
+    <footer class="post-footer">
+      <p>{{ site.description }}</p>
+    </footer>
+  </main>
+
+  <!-- Diagramas: convierte los bloques ```mermaid en SVG -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+  <script>
+    (function () {
+      var blocks = document.querySelectorAll('code.language-mermaid, div.language-mermaid code');
+      var done = new Set();
+      blocks.forEach(function (code) {
+        var wrapper = code.closest('div.language-mermaid') || code.closest('pre');
+        if (!wrapper || done.has(wrapper)) return;
+        done.add(wrapper);
+        var el = document.createElement('pre');
+        el.className = 'mermaid';
+        el.textContent = code.textContent;
+        wrapper.replaceWith(el);
+      });
+      if (window.mermaid) {
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: 'neutral',
+          fontFamily: 'Inter, system-ui, sans-serif',
+          securityLevel: 'strict'
+        });
+        mermaid.run({ querySelector: 'pre.mermaid' });
+      }
+    })();
+  </script>
+</body>
+</html>

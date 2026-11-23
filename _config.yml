@@ -1,0 +1,19 @@
+title: "Práctica 3 · Controlador Máquina Expendedora"
+description: "Sistemas Empotrados y de Tiempo Real"
+author: "David Martín Fortea"
+lang: es
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  auto_ids: true
+  toc_levels: 2..3
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .bundle
